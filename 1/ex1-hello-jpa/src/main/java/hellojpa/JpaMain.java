@@ -17,15 +17,27 @@ public class JpaMain {
         try {
               //비영속
             Member member = new Member();
-            member.setId(4L);
-            member.setUsername("JIN4");
+            member.setUsername("JIN1");
             member.setRoleType(RoleType.ADMIN);
+
+            Member member2 = new Member();
+            member2.setUsername("JIN2");
+            member2.setRoleType(RoleType.ADMIN);
+
+            Member member3 = new Member();
+            member3.setUsername("JIN3");
+            member3.setRoleType(RoleType.ADMIN);
+
+            Member member4 = new Member();
+            member4.setUsername("JIN4");
+            member4.setRoleType(RoleType.ADMIN);
               //영속
+            System.out.println("====================");
             em.persist(member);
-
-            Member member1 = em.find(Member.class, 4L);
-            System.out.println("member1 = " + member1.toString());
-
+            em.persist(member2);
+            em.persist(member3);
+            em.persist(member4);
+            System.out.println("====================");
 
 /*            Member findMember = em.find(Member.class, 1L);
             findMember.setUsername("수정4JIN");
