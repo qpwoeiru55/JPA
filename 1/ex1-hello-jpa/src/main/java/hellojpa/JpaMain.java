@@ -15,21 +15,27 @@ public class JpaMain {
         tx.begin();
 
         try {
-/*              //비영속
+              //비영속
             Member member = new Member();
             member.setId(4L);
-            member.setName("JIN4");
+            member.setUsername("JIN4");
+            member.setRoleType(RoleType.ADMIN);
               //영속
             em.persist(member);
 
             Member member1 = em.find(Member.class, 4L);
-            System.out.println("member1 = " + member1);*/
+            System.out.println("member1 = " + member1.toString());
 
 
-            Member findMember = em.find(Member.class, 1L);
-            findMember.setName("수정2JIN1");
+/*            Member findMember = em.find(Member.class, 1L);
+            findMember.setUsername("수정4JIN");
+            em.flush();
+            em.detach(findMember);
+            em.clear();*/
 
-/*            List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
+
+            /*
+            List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
                     .setFirstResult(5)
                     .setMaxResults(8)
                     .getResultList();
@@ -39,6 +45,7 @@ public class JpaMain {
 
             tx.commit();
         } catch (Exception e) {
+            System.out.println("롤백");
             tx.rollback();
         } finally {
             em.close();
