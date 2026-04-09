@@ -19,7 +19,6 @@ public class JpaMain {
 
         try {
             Order order = new Order();
-            order.ad
             tx.commit();
         } catch (Exception e) {
             System.out.println("롤백");
