@@ -6,7 +6,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jpabook.jpashop.domain.Book;
+import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
 
 public class JpaMain {
 
@@ -19,11 +21,18 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Book book = new Book();
-            book.setName("JPA");
-            book.setAuthor("이진석");
+            Member member = new Member();
+            member.setName("JPA");
 
-            em.persist(book);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            OrderItem find = em.find(OrderItem.class, 1L);
+
+            OrderItem find2 = em.find(OrderItem.class, 1L);
+
+
 
             tx.commit();
         } catch (Exception e) {
